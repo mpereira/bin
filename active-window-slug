@@ -20,13 +20,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-active_window_slug() {
-  xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) _NET_WM_NAME \
-    | cut -d \" -f 2 \
-    | iconv -f utf8 -t ascii\/\/translit\/\/ignore \
-    | tr -cs '[:alnum:]' '-' \
-    | tr '[:upper:]' '[:lower:]' \
-    | sed 's/^[^[:alnum:]]//;s/[^[:alnum:]]$//'
-}
+# Dependecies:
+# - cut
+# - iconv
+# - sed
+# - tr
+# - xprop
+#
+# Usage:
+# $ active-window-slug
 
-echo -n `active_window_slug`
+xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) _NET_WM_NAME \
+  | cut -d \" -f 2 \
+  | iconv -f utf8 -t ascii\/\/translit\/\/ignore \
+  | tr -cs '[:alnum:]' '-' \
+  | tr '[:upper:]' '[:lower:]' \
+  | sed 's/^[^[:alnum:]]//;s/[^[:alnum:]]$//'
