@@ -22,9 +22,7 @@
 
 # Dependecies:
 # - cut
-# - iconv
-# - sed
-# - tr
+# - txt2slug
 # - xprop
 #
 # Usage:
@@ -32,7 +30,4 @@
 
 xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) _NET_WM_NAME \
   | cut -d \" -f 2 \
-  | iconv -f utf8 -t ascii\/\/translit\/\/ignore \
-  | tr -cs '[:alnum:]' '-' \
-  | tr '[:upper:]' '[:lower:]' \
-  | sed 's/^[^[:alnum:]]//;s/[^[:alnum:]]$//'
+  | txt2slug
