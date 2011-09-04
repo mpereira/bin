@@ -22,5 +22,8 @@
 
 # Dependecies:
 # - curl
+#
+# Usage:
+# $ external-ip
 
 curl -s http://www.whatismyip.org/

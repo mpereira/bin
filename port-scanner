@@ -23,6 +23,9 @@
 # Dependecies:
 # - curl
 # - libxml2
+#
+# Usage:
+# $ port-scanner PORT-NUMBER
 
 curl http://www.whatsmyip.org/ports/custom.php \
      -s \
